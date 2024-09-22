@@ -2,15 +2,14 @@ package com.hemebiotech.analytics;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AnalyticsCounter {
 
 	public static void main(String[] args) {
-		int headacheCount = 0;
-		int rashCount = 0;
-		int pupilCount = 0;
+		Map<String, Integer> symptomCounts = new HashMap<>();
 
 		String currentDirectory = System.getProperty("user.dir");
 
@@ -19,27 +18,15 @@ public class AnalyticsCounter {
 			String line = reader.readLine();
 
 			while (line != null) {
-				// Counting occurrences of symptoms
-				if (line.equals("headache")) {
-					headacheCount++; // Increments the correct variable
-				} else if (line.equals("rash")) {
-					rashCount++; // Increments the correct variable
-				} else if (line.contains("pupils")) {
-					pupilCount++; // Increments the correct variable
-				}
-				line = reader.readLine(); // Read next symptom
+				symptomCounts.put(line, symptomCounts.getOrDefault(line, 0) + 1);
+				line = reader.readLine();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		// Writing the output file
-		try (FileWriter writer = new FileWriter("result.out")) {
-			writer.write("headache: " + headacheCount + "\n"); // Writes the correct variable
-			writer.write("rash: " + rashCount + "\n");
-			writer.write("dilated pupils: " + pupilCount + "\n");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// Writing the output file using ISymptomWriter
+		ISymptomWriter writer = new WriteSymptomDataToFile("result.out");
+		writer.writeSymptoms(symptomCounts);
 	}
 }
