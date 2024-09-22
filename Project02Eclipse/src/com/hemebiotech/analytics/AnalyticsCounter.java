@@ -5,11 +5,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Responsible for counting, sorting, and writing symptoms data.
+ */
 public class AnalyticsCounter {
 
 	private ISymptomReader reader;
 	private ISymptomWriter writer;
 
+	/**
+	 * Constructor for AnalyticsCounter
+	 *
+	 * @param reader The symptom reader
+	 * @param writer The symptom writer
+	 */
 	public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
 		this.reader = reader;
 		this.writer = writer;
@@ -21,7 +30,7 @@ public class AnalyticsCounter {
 	 * @return List of symptoms
 	 */
 	public List<String> getSymptoms() {
-		return reader.GetSymptoms();
+		return reader.getSymptoms();
 	}
 
 	/**

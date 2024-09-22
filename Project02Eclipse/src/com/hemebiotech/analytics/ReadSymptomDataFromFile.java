@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reads symptom data from a file.
+ */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
@@ -15,7 +18,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	}
 
 	@Override
-	public List<String> GetSymptoms() {
+	public List<String> getSymptoms() {
 		ArrayList<String> result = new ArrayList<>();
 
 		if (filepath != null) {

@@ -4,6 +4,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Writes symptom data to a file.
+ */
 public class WriteSymptomDataToFile implements ISymptomWriter {
 
     private String filepath;

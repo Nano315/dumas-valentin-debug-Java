@@ -2,6 +2,9 @@ package com.hemebiotech.analytics;
 
 import java.util.Map;
 
+/**
+ * Interface for writing symptom data to a destination.
+ */
 public interface ISymptomWriter {
     /**
      * Writes the symptoms and their respective counts to a file.
