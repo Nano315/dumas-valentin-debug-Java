@@ -56,17 +56,4 @@ public class AnalyticsCounter {
 	public void writeSymptoms(Map<String, Integer> symptoms) {
 		writer.writeSymptoms(symptoms);
 	}
-
-	public static void main(String[] args) {
-		String currentDirectory = System.getProperty("user.dir");
-
-		ISymptomReader reader = new ReadSymptomDataFromFile(currentDirectory + "/../symptoms.txt");
-		ISymptomWriter writer = new WriteSymptomDataToFile("result.out");
-		AnalyticsCounter counter = new AnalyticsCounter(reader, writer);
-
-		List<String> symptoms = counter.getSymptoms();
-		Map<String, Integer> countedSymptoms = counter.countSymptoms(symptoms);
-		Map<String, Integer> sortedSymptoms = counter.sortSymptoms(countedSymptoms);
-		counter.writeSymptoms(sortedSymptoms);
-	}
 }
